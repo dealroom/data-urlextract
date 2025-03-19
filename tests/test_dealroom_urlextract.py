@@ -56,8 +56,7 @@ def test_url_extract(url: str, expected: str) -> None:
 
 test_data_urls_with_invalid_chars = {
     "whitespace": "https://example.com/somet hing.html",
-    "backward slash 1": "https://example.com/somet\hing.html",
-    "backward slash 2": "https://example.com/somet\\hing.html",
+    "backward slash": "https://example.com/somet\\hing.html",
     "less-than sign": "https://example.com/somet<hing.html",
     "greater-than sign": "https://example.com/somet>hing.html",
     "open curly bracket": "https://example.com/somet{hing.html",
