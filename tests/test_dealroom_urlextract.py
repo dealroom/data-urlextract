@@ -62,6 +62,7 @@ test_data_urls_with_invalid_chars = {
     "open curly bracket": "https://example.com/somet{hing.html",
     "closed curly bracket": "https://example.com/somet}hing.html",
     "semi-colon": "https://example.com/somet;hing.html",
+    "all": "https://example.com/s\\o m<e>t{h}i;ng.html",
 }
 
 
