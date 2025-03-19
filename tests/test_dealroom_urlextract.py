@@ -2,7 +2,8 @@ from contextlib import nullcontext as does_not_raise
 from typing import Any
 
 import pytest
-from dealroom_urlextract import InvalidURLFormat, extract
+
+from dealroom_urlextract import InvalidURLFormat, extract, extract_with_path
 
 website_urls = [
     ("http://www.something.com/home.html?abc", does_not_raise()),
@@ -49,5 +50,41 @@ test_data_raw_website_urls = [
         "ecb",
     ],
 )
-def test_url_extract(url, expected) -> None:
+def test_url_extract(url: str, expected: str) -> None:
     assert extract(url) == expected
+
+
+test_data_urls_with_invalid_chars = {
+    "whitespace": "https://example.com/somet hing.html",
+    "backward slash 1": "https://example.com/somet\hing.html",
+    "backward slash 2": "https://example.com/somet\\hing.html",
+    "less-than sign": "https://example.com/somet<hing.html",
+    "greater-than sign": "https://example.com/somet>hing.html",
+    "open curly bracket": "https://example.com/somet{hing.html",
+    "closed curly bracket": "https://example.com/somet}hing.html",
+    "semi-colon": "https://example.com/somet;hing.html",
+}
+
+
+@pytest.mark.parametrize(
+    "url",
+    test_data_urls_with_invalid_chars.values(),
+    ids=test_data_urls_with_invalid_chars.keys(),
+)
+def test_extract_urls_with_invalid_chars(url: str) -> None:
+    with pytest.raises(
+        InvalidURLFormat, match=r"Website urls can't contain these characters"
+    ):
+        extract(url)
+
+
+@pytest.mark.parametrize(
+    "url",
+    test_data_urls_with_invalid_chars.values(),
+    ids=test_data_urls_with_invalid_chars.keys(),
+)
+def test_extract_wth_path_urls_with_invalid_chars(url: str) -> None:
+    with pytest.raises(
+        InvalidURLFormat, match=r"Website urls can't contain these characters"
+    ):
+        extract_with_path(url)
