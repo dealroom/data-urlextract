@@ -83,7 +83,7 @@ def test_extract_urls_with_invalid_chars(url: str) -> None:
     test_data_urls_with_invalid_chars.values(),
     ids=test_data_urls_with_invalid_chars.keys(),
 )
-def test_extract_wth_path_urls_with_invalid_chars(url: str) -> None:
+def test_extract_with_path_urls_with_invalid_chars(url: str) -> None:
     with pytest.raises(
         InvalidURLFormat, match=r"Website urls can't contain these characters"
     ):
