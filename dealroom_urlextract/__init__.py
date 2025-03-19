@@ -35,9 +35,9 @@ def extract(url: str, keep_subdomain: bool = True) -> str:
         invalid_char in url for invalid_char in INVALID_CHARACTERS
     )
     if contains_invalid_char:
+        chars = "', '".join(INVALID_CHARACTERS)
         raise InvalidURLFormat(
-            f"{url} Website urls can't have invalid characters such as: space, '\, <, >, ;, "
-            + "{, }"
+            f"{url} Website urls can't contain these characters: '{chars}'"
         )
 
     # Domain and suffix are required
