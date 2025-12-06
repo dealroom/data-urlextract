@@ -20,5 +20,5 @@ ruff==0.9.10
 tldextract==3.5.0
 tomli==2.0.1
 typing-extensions==4.7.1
-urllib3==2.0.7
+urllib3==2.6.0
 zipp==3.15.0
