@@ -41,7 +41,8 @@ def extract(url: str, keep_subdomain: bool = True) -> str:
         )
 
     # Domain and suffix are required
-    subdomain, domain, suffix = tldextract.extract(url)
+    extracted = tldextract.extract(url)
+    subdomain, domain, suffix = extracted.subdomain, extracted.domain, extracted.suffix
     if not domain or not suffix:
         raise InvalidURLFormat(
             f"{url} Domain or suffix are missing or could not be extracted."
