@@ -1,4 +1,4 @@
-# DEPRECATED !!! Superseeded by https://github.com/dealroom/python-urlextract
+# DEPRECATED. No longer actively maintained or supported.
 
 # urlextract
 
