@@ -1,3 +1,5 @@
+# DEPRECATED !!! Superseeded by https://github.com/dealroom/python-urlextract
+
 # urlextract
 
 Wrapper for extracting only wanted parts from urls.
